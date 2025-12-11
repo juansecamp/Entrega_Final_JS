@@ -12,11 +12,8 @@
 <body>
 
     <div class="container">
-        <h1>📅 Sistema de Turnos
-            Clínica del Dr. Cureta
-        </h1>
-        <p id="p" class="p">Selecciona la especialidad y el turno deseado</p>
-
+        <h1>📅 Sistema de Turnos Clínica del Dr. Cureta</h1>
+            <h2 id="p" class="p"> Paso 1: Selecciona la especialidad y el profesional</h2>
         <div class="filtros-container">
             <div class="filtro-item">
                 <label for="select-especialidad">Especialidad:</label>
@@ -31,9 +28,37 @@
                 </select>
             </div>
         </div>
+
+        <div class="calendar-section" id="calendar-section" disabled>
+            <h2>Paso 2: Selecciona la Fecha y el Horario</h2>
+            <p class="mensaje-espera" id="mensaje-calendar-espera">
+                Selecciona un profesional para habilitar el calendario.
+            </p>
+
+            <div id="calendar-wrapper" class="hidden-element">
+                <div class="calendar-header">
+                    <button id="prev-month"> &lt; </button>
+                    <h3 id="current-month"></h3>
+                    <button id="next-month"> &gt; </button>
+                </div>
+
+                <div class="calendar-grid">
+                    <div class="day-name">Lun</div>
+                    <div class="day-name">Mar</div>
+                    <div class="day-name">Mié</div>
+                    <div class="day-name">Jue</div>
+                    <div class="day-name">Vie</div>
+                    <div class="day-name">Sáb</div>
+                    <div class="day-name">Dom</div>
+                    <div id="calendar-days" class="days-container">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="contenedor-turnos-dinamico">
             <p class="mensaje-espera">
-                Por favor, selecciona una **Especialidad** y un **Profesional** para ver los turnos disponibles.
+                Selecciona una **Fecha Habil** para ver los horarios disponibles.
             </p>
         </div>
 

@@ -23,7 +23,6 @@ h1, h2, h3 {
 }
 
 p.p {
-    /* Cambio de p a p.p para no afectar otros p */
     font-family: 'Lucida Grande';
     font-size: 24px;
     text-align: center;
@@ -31,7 +30,6 @@ p.p {
     font-weight: bold;
 }
 
-/* --- NUEVOS ESTILOS PARA FILTROS --- */
 .filtros-container {
     display: flex;
     gap: 20px;
@@ -57,15 +55,114 @@ p.p {
     margin-top: 5px;
 }
 
+.calendar-section {
+    margin: 25px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.hidden-element {
+    display: none;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+}
+
+.calendar-header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.calendar-header button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day-name {
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 0;
+    color: #333;
+}
+
+.days-container {
+    grid-column: 1 / -1; 
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day {
+    aspect-ratio: 1 / 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 8px 0;
+    transition: background-color 0.2s;
+}
+
+/* Día Hábil (Lunes a Viernes) y dentro del rango */
+.day.current-month {
+    background-color: #e0f7fa; /* Celeste claro */
+    color: #00796b;
+}
+
+/* Fines de Semana, Feriados y Fuera de Rango (GRISADOS) */
+.day.weekend, .day.holiday, .day.out-of-range, .day.other-month {
+    background-color: #e9e9e9; 
+    color: #aaa;
+    cursor: not-allowed;
+    pointer-events: none; /* Deshabilita el click */
+}
+
+/* Días seleccionables al pasar el mouse */
+.day.current-month:hover {
+    background-color: #b2ebf2;
+    border: 1px solid #007bff;
+}
+
+/* Día Seleccionado */
+.day.selected {
+    background-color: #007bff; 
+    color: white;
+    font-weight: bold;
+    border: 2px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* --- ESTILOS DE TURNOS --- */
+
 .mensaje-espera {
     color: #6c757d;
     text-align: center;
     padding: 30px;
     border: 1px dashed #ccc;
     border-radius: 4px;
+    margin-top: 20px;
 }
 
-/* Contenedor dinámico de turnos, adaptando el estilo original */
 #contenedor-turnos-dinamico {
     margin-bottom: 20px;
     padding: 15px;
@@ -74,19 +171,17 @@ p.p {
 }
 
 .turnos-grid {
-    /* Reutilizamos tu clase para la grilla dinámica */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
     margin-top: 15px;
 }
 
-/* ------------------------------------- */
-
 .turno-btn {
     padding: 15px 5px;
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
+    background-color: #c8e6c9; /* Verde claro para disponible */
+    border: 1px solid #28a745;
+    color: #28a745;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
@@ -94,54 +189,22 @@ p.p {
     font-weight: bold;
 }
 
-.turno-btn:hover {
-    background-color: #dee2e6;
+.turno-btn[data-ocupado="true"] {
+    background-color: #ffcdd2; /* Rojo claro para ocupado */
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.turno-btn:not([data-ocupado="true"]):hover {
+    background-color: #a5d6a7;
 }
 
 .seleccionado {
-    background-color: #28a745;
-    color: white;
-    border-color: #218838;
+    background-color: #28a745 !important; 
+    color: white !important;
+    border-color: #218838 !important;
     transform: scale(1.05);
-    /* El pointer-events: none es clave para que no se pueda des-seleccionar el único turno */
-    pointer-events: none;
-}
-
-.seleccionado:hover {
-    background-color: #218838;
-}
-
-#lista-seleccionados {
-    list-style: none;
-    padding: 0;
-}
-
-#lista-seleccionados li {
-    background-color: #f8f9fa;
-    margin-bottom: 5px;
-    padding: 8px;
-    border-radius: 4px;
-    border-left: 5px solid #007bff;
-}
-
-.btn-accion {
-    /* Estilos del botón guardar */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-size: 18px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s;
-}
-
-.btn-accion:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.btn-accion:hover:not(:disabled) {
-    background-color: #0056b3;
+    pointer-events: none !important;
 }
