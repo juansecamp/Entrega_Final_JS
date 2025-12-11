@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Turnos Mejorado</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📅 Sistema de Turnos
+            Clínica del Dr. Cureta
+        </h1>
+        <p id="p" class="p">Selecciona la especialidad y el turno deseado</p>
+
+        <div class="filtros-container">
+            <div class="filtro-item">
+                <label for="select-especialidad">Especialidad:</label>
+                <select id="select-especialidad" class="select-filtro">
+                    <option value="">Cargando especialidades...</option>
+                </select>
+            </div>
+            <div class="filtro-item">
+                <label for="select-profesional">Profesional:</label>
+                <select id="select-profesional" class="select-filtro" disabled>
+                    <option value="">Seleccione una especialidad</option>
+                </select>
+            </div>
+        </div>
+        <div id="contenedor-turnos-dinamico">
+            <p class="mensaje-espera">
+                Por favor, selecciona una **Especialidad** y un **Profesional** para ver los turnos disponibles.
+            </p>
+        </div>
+
+        <div class="info-seleccion">
+            <h3>Turno Seleccionado:</h3>
+            <ul id="lista-seleccionados">
+            </ul>
+        </div>
+
+        <button id="btn-guardar" class="btn-accion" disabled>Guardar Turno</button>
+    </div>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

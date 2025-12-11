@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+}
+
+h1, h2, h3 {
+    color: #007bff;
+    text-align: center;
+}
+
+p.p {
+    /* Cambio de p a p.p para no afectar otros p */
+    font-family: 'Lucida Grande';
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* --- NUEVOS ESTILOS PARA FILTROS --- */
+.filtros-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0 30px 0;
+    padding: 15px;
+    border: 1px solid #007bff;
+    border-radius: 6px;
+}
+
+.filtro-item {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.select-filtro {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.mensaje-espera {
+    color: #6c757d;
+    text-align: center;
+    padding: 30px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
+
+/* Contenedor dinámico de turnos, adaptando el estilo original */
+#contenedor-turnos-dinamico {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.turnos-grid {
+    /* Reutilizamos tu clase para la grilla dinámica */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* ------------------------------------- */
+
+.turno-btn {
+    padding: 15px 5px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    text-align: center;
+    font-weight: bold;
+}
+
+.turno-btn:hover {
+    background-color: #dee2e6;
+}
+
+.seleccionado {
+    background-color: #28a745;
+    color: white;
+    border-color: #218838;
+    transform: scale(1.05);
+    /* El pointer-events: none es clave para que no se pueda des-seleccionar el único turno */
+    pointer-events: none;
+}
+
+.seleccionado:hover {
+    background-color: #218838;
+}
+
+#lista-seleccionados {
+    list-style: none;
+    padding: 0;
+}
+
+#lista-seleccionados li {
+    background-color: #f8f9fa;
+    margin-bottom: 5px;
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 5px solid #007bff;
+}
+
+.btn-accion {
+    /* Estilos del botón guardar */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-accion:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-accion:hover:not(:disabled) {
+    background-color: #0056b3;
+}
